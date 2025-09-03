@@ -3,10 +3,10 @@ let objects = [];
 let scaleFactor;
 
 function preload() {
-  imgs[1] = loadImage('png/1.PNG');
-  imgs[2] = loadImage('png/2.png');
-  imgs[7] = loadImage('png/7.png');
-  imgs[9] = loadImage('png/9.png');
+  imgs[1] = loadImage('project1/png/1.PNG');
+  imgs[2] = loadImage('project1/png/2.png');
+  imgs[7] = loadImage('project1/png/7.png');
+  imgs[9] = loadImage('project1/png/9.png');
 }
 
 function setup() {
@@ -27,30 +27,49 @@ function setup() {
 }
 
 function draw() {
-    background(255);
-  
-    // Find the first object that is hovered
-    let hovered = null;
-    for (let obj of objects) {
-      if (obj.isOver()) {
-        hovered = obj;
-        break; // stop at the first one
-      }
-    }
-  
-    // Update & display objects
-    for (let obj of objects) {
-      obj.update(hovered === obj); // tell it whether it is the hovered one
-      obj.display();
+  background(255);
+
+  for (let obj of objects) {
+    obj.update();
+    obj.display();
+  }
+}
+
+function mousePressed() {
+  for (let obj of objects) {
+    if (obj.isOver()) {
+      window.location.href = obj.url;
     }
   }
-  
-  // Update method of Bouncer
-  update(isHovered) {
-    if (!isHovered) {
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  scaleFactor = width * 0.1; // adjust on resize
+}
+
+// Class for bouncing image objects
+class Bouncer {
+  constructor(img, label, url) {
+    this.img = img;
+    this.label = label;
+    this.url = url;
+
+    // Use natural image size, scaled proportionally
+    this.w = (this.img.width / this.img.height) * scaleFactor;
+    this.h = scaleFactor;
+
+    this.x = random(width - this.w);
+    this.y = random(height - this.h);
+    this.dx = random([-3, 3]);
+    this.dy = random([-2, 2]);
+  }
+
+  update() {
+    if (!this.isOver()) {
       this.x += this.dx;
       this.y += this.dy;
-  
+
       // Bounce off edges
       if (this.x <= 0 || this.x + this.w >= width) {
         this.dx *= -1;
@@ -60,4 +79,17 @@ function draw() {
       }
     }
   }
-  
+
+  display() {
+    image(this.img, this.x, this.y, this.w, this.h);
+
+    if (this.isOver()) {
+      text(this.label, this.x + this.w / 2, this.y - 20);
+    }
+  }
+
+  isOver() {
+    return mouseX > this.x && mouseX < this.x + this.w &&
+           mouseY > this.y && mouseY < this.y + this.h;
+  }
+}
