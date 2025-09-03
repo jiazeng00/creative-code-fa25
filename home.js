@@ -4,9 +4,9 @@ let scaleFactor;
 
 function preload() {
   imgs[1] = loadImage('png/1.PNG');
-  imgs[2] = loadImage('png/2.PNG');
-  imgs[7] = loadImage('png/7.PNG');
-  imgs[9] = loadImage('png/9.PNG');
+  imgs[2] = loadImage('png/2.png');
+  imgs[7] = loadImage('png/7.png');
+  imgs[9] = loadImage('png/9.png');
 }
 
 function setup() {
