@@ -24,6 +24,7 @@ function setup() {
   textAlign(CENTER, CENTER);
   textSize(15);
   fill(0);
+  
 }
 
 function draw() {
