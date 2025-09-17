@@ -1,7 +1,7 @@
 let t = 0; //time
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight); //idk why gets cut off on the top
   background(255);
   noCursor();
 }
