@@ -43,7 +43,7 @@ function setup() {
   imageMode(CENTER);
 
   wormholeSize = windowWidth * 0.35;
-  gifSize = windowWidth * 0.06;
+  gifSize = windowWidth * 0.055;
 
   
   
