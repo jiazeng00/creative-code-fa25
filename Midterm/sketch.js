@@ -8,7 +8,7 @@ let wormholeSize;
 let gifSize;
 let noiseSpeed = 0.02;
 
-// Transition animations
+// Transition animation duration
 const TRANSITION_FRAMES = 10;
 const TRANSITION_FPS = 15;
 const TRANSITION_DURATION = (TRANSITION_FRAMES / TRANSITION_FPS) * 1000;
@@ -51,6 +51,9 @@ function setup() {
   movers.push(new Mover("A", width / 2, height / 2));
 }
 
+
+
+
 function draw() {
   background(0);
 
@@ -88,6 +91,8 @@ class Mover {
       let angle = noise(this.xoff, this.yoff) * TWO_PI * 2; 
       //circular range
       
+
+      //movements
       let speed = 2.5;
       this.x += cos(angle) * speed;
       this.y += sin(angle) * speed;
@@ -96,7 +101,7 @@ class Mover {
       if (this.x > width + 50) this.x = -50;
       if (this.y < -50) this.y = height + 50;
       if (this.y > height + 50) this.y = -50;
-
+//perlins
       this.xoff += noiseSpeed;
       this.yoff += noiseSpeed;
     }
@@ -121,7 +126,7 @@ class Mover {
   }
 
   isTransition() {
-    return this.state.includes("to");
+    return this.state.includes("to");    // if the current Mover is in transition state
   }
 
   startTransition() {
