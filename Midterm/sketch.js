@@ -116,7 +116,7 @@ class Mover {
     let dy = (this.y - height / 2) / (wormholeSize / 2);
     
 //transition area measurements
-    let inside = sqrt(dx * dx + dy * dy) < 0.5; 
+    let inside = sqrt(dx * dx + dy * dy) < 0.6; 
 
  //cool down
     let now = millis();
