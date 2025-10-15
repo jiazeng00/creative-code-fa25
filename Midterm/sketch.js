@@ -51,6 +51,8 @@ function setup() {
   movers.push(new Mover("A", width / 2, height / 2));
 }
 
+
+//full screen if screen changes
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight)
 }
