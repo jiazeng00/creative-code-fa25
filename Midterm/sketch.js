@@ -43,7 +43,7 @@ function setup() {
   imageMode(CENTER);
 
   wormholeSize = windowWidth * 0.35;
-  gifSize = windowWidth * 0.055;
+  gifSize = windowWidth * 0.05;
 
   
   
@@ -55,6 +55,8 @@ function setup() {
 //full screen if screen changes
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight)
+   wormholeSize = windowWidth * 0.35;
+    gifSize = windowWidth * 0.055;
 }
 
 
@@ -116,7 +118,7 @@ class Mover {
     let dy = (this.y - height / 2) / (wormholeSize / 2);
     
 //transition area measurements
-    let inside = sqrt(dx * dx + dy * dy) < 0.6; 
+    let inside = sqrt(dx * dx + dy * dy) < 0.8; 
 
  //cool down
     let now = millis();
