@@ -51,6 +51,10 @@ function setup() {
   movers.push(new Mover("A", width / 2, height / 2));
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight)
+}
+
 
 
 
